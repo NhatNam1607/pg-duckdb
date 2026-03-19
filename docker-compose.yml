@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  pg_duckdb_service:
+    # Build trực tiếp từ file Dockerfile trong thư mục hiện tại
+    build: .
+    container_name: my_local_pg_duckdb
+    # Ánh xạ cả cổng 5432 từ container ra cổng 5432 trên máy tính cá nhân
+    ports:
+      - "5432:5432"
+    # Đọc tự động các biến từ file .env nếu có, 
+    # nếu file .env không có thì lấy giá trị mặc định chữ 'postgres'
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+      - POSTGRES_DB=${POSTGRES_DB:-postgres}
+    # Mount Volume chuyên nghiệp cho việc sử dụng Local
+    volumes:
+      - pg_local_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  # Cấu hình tạo ở đĩa vật lý ảo cục bộ (Docker Local Volume)
+  pg_local_data:

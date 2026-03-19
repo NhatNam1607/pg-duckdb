@@ -1,0 +1,16 @@
+# Chặn vĩnh viễn không đẩy file chứa mật khẩu thực tế lên GitHub
+.env
+
+# Chặn đẩy các thư mục cấu hình IDE (VSCode, Jetbrains)
+.vscode/
+.idea/
+
+# Chặn đẩy các thư mục rác do hệ điều hành tạo
+.DS_Store
+Thumbs.db
+
+# Chặn các file dữ liệu (nếu bạn lỡ tay mount volume ra Desktop/Thư mục code)
+data/
+pg_data/
+*.duckdb
+*.duckdb.wal
