@@ -1,5 +1,5 @@
 # Use the official image
-FROM pgduckdb/pgduckdb:latest
+FROM pgduckdb/pgduckdb:16-main
 
 # 1. Switch to root user to install dependencies and generate SSL certificates
 USER root
